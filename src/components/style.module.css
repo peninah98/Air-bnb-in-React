@@ -55,3 +55,9 @@ body {
     border: none;
     cursor: pointer;
 }
+
+
+.imageContainer{
+    max-width: 100%;
+    
+}

@@ -1,15 +1,23 @@
 import style from './style.module.css'
-
+import { useState } from 'react'
 import memeData from '../memeData.js'
-let url
-const getMemeImage = () =>{
-    const memesArray = memeData.data.memes
-    const randomMeme = Math.floor(Math.random() * memesArray.length)
-    console.log(randomMeme);
-    url = memesArray[randomMeme].url 
-    console.log(url);
-}
+
 const Meme = () =>{
+    // const [memeImage,setMemeImage] = useState("")
+    const [meme,setMeme] = useState({
+        topText : "",
+        bottomText : "",
+        randomImages :  "http://i.imgflip.com/1bij.jpg" 
+    })
+    const getMemeImage = () =>{
+        const memesArray = memeData.data.memes
+        const randomMeme = Math.floor(Math.random() * memesArray.length)
+        const url =  memesArray[randomMeme].url
+        setMeme(prevMeme =>({
+            ...prevMeme,
+            randomImages:url
+        }))
+    }
     return (
         <main>
             <div className={style.form}>
@@ -29,6 +37,9 @@ const Meme = () =>{
                 >
                     Get a new meme image. 🖼
                 </button>
+                <div >
+                    <img src={meme.randomImages} className={style.imageContainer} alt="Meme image" />
+                </div>
             </div>
         </main>
     )
