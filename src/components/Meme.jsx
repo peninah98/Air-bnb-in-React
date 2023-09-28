@@ -27,7 +27,7 @@ const Meme = () =>{
                     className={style.formButton}
                     onClick={getMemeImage}
                 >
-                    Get a new meme image 🖼
+                    Get a new meme image. 🖼
                 </button>
             </div>
         </main>
