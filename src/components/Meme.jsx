@@ -1,5 +1,5 @@
 import style from './style.module.css'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import memeData from '../memeData.js'
 import cx from 'classnames'
 
