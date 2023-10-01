@@ -1,6 +1,7 @@
 import style from './style.module.css'
 import { useState } from 'react'
 import memeData from '../memeData.js'
+import cx from 'classnames'
 
 const Meme = () =>{
     // const [memeImage,setMemeImage] = useState("")
@@ -18,6 +19,15 @@ const Meme = () =>{
             randomImages:url
         }))
     }
+ 
+    function handleChange(event) {
+        const {name, value} = event.target
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            [name]: value
+        }))
+    }
+
     return (
         <main>
             <div className={style.form}>
@@ -25,11 +35,17 @@ const Meme = () =>{
                     type="text"
                     placeholder="Top text"
                     className={style.formInput}
+                    name="topText"
+                    value={meme.topText}
+                    onChange={handleChange}
                 />
                 <input 
                     type="text"
                     placeholder="Bottom text"
                     className={style.formInput}
+                    name="bottomText"
+                    value={meme.bottomText}
+                    onChange={handleChange}
                 />
                 <button 
                     className={style.formButton}
@@ -37,11 +53,16 @@ const Meme = () =>{
                 >
                     Get a new meme image. 🖼
                 </button>
-                <div >
+                <div className={style.meme} >
                     <img src={meme.randomImages} className={style.imageContainer} alt="Meme image" />
+                    <h2 className={ cx(style.memeText, style.top) } >{meme.topText}</h2>
+                    <h2  className={cx(style.memeText, style.bottom) } >{meme.bottomText}</h2>
                 </div>
             </div>
         </main>
+
+
+
     )
 }
 

@@ -4,7 +4,7 @@ const Header = ()=>{
         <header className={style.header}>
             <img 
                 src="./images/tollFace.png" 
-                className={style.headerImage}
+                className={style.headerImage} alt='Logo'
             />
             <h2 className={style.headerTitle}>Meme Generator</h2>
             <h4 className={style.headerProject}>React Course - Project 3</h4>
